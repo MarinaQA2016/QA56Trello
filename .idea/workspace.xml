@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1b1649b4-8c75-430d-963f-d3c354635210" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1dKtc9E8HwWqe4KTHFxq1fZwI0U" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../m20_0611hw_day4" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="TestNG.CurrentBoardTests">
+    <configuration name="CurrentBoardTests" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QA5,6Trello" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CurrentBoardTests" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CurrentBoardTests.createNewCard" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QA5,6Trello" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CurrentBoardTests" />
+      <option name="METHOD_NAME" value="createNewCard" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CurrentBoardTests.createNewList" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QA5,6Trello" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CurrentBoardTests" />
+      <option name="METHOD_NAME" value="createNewList" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTests" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QA5,6Trello" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.LoginTests" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.CurrentBoardTests" />
+        <item itemvalue="TestNG.CurrentBoardTests.createNewCard" />
+        <item itemvalue="TestNG.CurrentBoardTests.createNewList" />
+        <item itemvalue="TestNG.LoginTests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1b1649b4-8c75-430d-963f-d3c354635210" name="Default Changelist" comment="" />
+      <created>1592185689001</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592185689001</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Testing lists and cards in Trello">
+      <created>1592198020459</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592198020459</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Testing lists and cards in Trello" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing lists and cards in Trello" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="203" y="0" key="CommitChangelistDialog2" timestamp="1592198018408">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="203" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1592198018408" />
+    <state x="410" y="60" key="FileChooserDialogImpl" timestamp="1592198072528">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="410" y="60" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1592198072528" />
+    <state width="1311" height="176" key="GridCell.Tab.0.bottom" timestamp="1592197610166">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1311" height="176" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1592197610166" />
+    <state width="1311" height="176" key="GridCell.Tab.0.center" timestamp="1592197610166">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1311" height="176" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1592197610166" />
+    <state width="1311" height="176" key="GridCell.Tab.0.left" timestamp="1592197610165">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1311" height="176" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1592197610165" />
+    <state width="1311" height="176" key="GridCell.Tab.0.right" timestamp="1592197610166">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1311" height="176" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1592197610166" />
+    <state x="35" y="0" key="SettingsEditor" timestamp="1592198128134">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="35" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1592198128134" />
+    <state x="175" y="50" key="Vcs.Push.Dialog.v2" timestamp="1592197742773">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="175" y="50" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1592197742773" />
+    <state x="437" y="213" key="git4idea.rebase.GitRebaseDialog" timestamp="1592196938719">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="437" y="213" key="git4idea.rebase.GitRebaseDialog/0.0.1366.768@0.0.1366.768" timestamp="1592196938719" />
+  </component>
+</project>
