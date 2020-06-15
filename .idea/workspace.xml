@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b1649b4-8c75-430d-963f-d3c354635210" name="Default Changelist" comment="" />
+    <list default="true" id="1b1649b4-8c75-430d-963f-d3c354635210" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,10 +166,14 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="35" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1592198128134" />
-    <state x="175" y="50" key="Vcs.Push.Dialog.v2" timestamp="1592197742773">
+    <state x="175" y="50" key="Vcs.Push.Dialog.v2" timestamp="1592198659839">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="175" y="50" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1592197742773" />
+    <state x="175" y="50" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1592198659839" />
+    <state x="437" y="274" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592198480043">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="437" y="274" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.768@0.0.1366.768" timestamp="1592198480043" />
     <state x="437" y="213" key="git4idea.rebase.GitRebaseDialog" timestamp="1592196938719">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

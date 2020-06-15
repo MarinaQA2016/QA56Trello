@@ -91,7 +91,8 @@ public class CurrentBoardTests {
         System.out.println("Initially number of cards in 'QA Haifa56' is " + initialNumberOfCards);
         Thread.sleep(2000);
 
-        // --- Add new card 'SeleniumCard'
+        // --- Add new card 'SeleniumCard' ---
+        // --- try-catch block handles different 'Add' button names ---
         try {
             driver.findElement(By.xpath("//span[contains(text(),'Add a card')]")).click();
         } catch (ElementNotInteractableException ex) {
