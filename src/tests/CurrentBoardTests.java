@@ -81,9 +81,6 @@ public class CurrentBoardTests {
     @Test
     public void createNewCard(){
 
-
-
-
     }
 
     @AfterMethod
