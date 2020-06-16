@@ -4,20 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class LoginTests {
-    WebDriver driver;
-
-    @BeforeMethod
-    public void initTests() throws InterruptedException {
-        //---- Enter to the application ---
-        driver = new ChromeDriver();
-        driver.get("https://trello.com/");
-        Thread.sleep(5000);
-    }
+public class LoginTests extends TestBase{
 
     @Test
     public void loginTestPositive() throws InterruptedException {
@@ -27,18 +19,20 @@ public class LoginTests {
         Thread.sleep(5000);
 
         //----Enter login value and click 'Log in' button ----
-        driver.findElement(By.id("user")).sendKeys("marinaqatest2019@gmail.com");
+        driver.findElement(By.id("user")).sendKeys(LOGIN);
         Thread.sleep(2000);
         driver.findElement(By.id("login")).click();
         Thread.sleep(10000);
 
         //---- Enter password value and click 'Log in' button
-        driver.findElement(By.id("password")).sendKeys("marinaqa");
+        driver.findElement(By.id("password")).sendKeys(PASSWORD);
         driver.findElement(By.id("login-submit")).click();
-        Thread.sleep(25000);
-        System.out.println("'Boards' button text: " + driver
-                .findElement(By.xpath("//button[@data-test-id='header-boards-menu-button']/span[2]")).getText());
+        Thread.sleep(35000);
+        WebElement boardIcon = driver.findElement(By
+                .xpath("//button[@data-test-id='header-boards-menu-button']/span[2]"));
+        System.out.println("'Boards' button text: " + boardIcon.getText());
         Thread.sleep(5000);
+        Assert.assertEquals("Boards",boardIcon.getText(),"Text on the boardIcon is not 'Boards'");
 
     }
 
@@ -84,7 +78,7 @@ public class LoginTests {
 
         //--- Enter Correct Login
         WebElement loginField = driver.findElement(By.id("user"));
-        loginField.sendKeys("marinaqatest2019@gmail.com");
+        loginField.sendKeys(LOGIN);
         Thread.sleep(5000);
 
         //----Click 'Log in' button ----
@@ -104,8 +98,5 @@ public class LoginTests {
 
 
 
-    @AfterMethod
-    public void tearDown(){
-        driver.quit();
-    }
+
 }
