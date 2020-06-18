@@ -115,6 +115,8 @@ public class CurrentBoardTests extends TestBase{
                         findElements(By.xpath("//div[@class = 'list js-list-content']")).size());
             }
             Thread.sleep(3000);
+            //---Receive the quantity of cards ---
+            int beforeAdding = driver.findElements(By.cssSelector("a.list-card")).size();
 
             //--- Define two possible buttons for adding new card and click on the displayed one---
             WebElement addCardButton = driver
@@ -137,6 +139,10 @@ public class CurrentBoardTests extends TestBase{
             WebElement cancelEditCardButton = driver.findElement(By.cssSelector("div.card-composer a.icon-close"));
             cancelEditCardButton.click();
             Thread.sleep(2000);
+        //---Receive the quantity of cards ---
+        int afterAdding = driver.findElements(By.cssSelector("a.list-card")).size();
+        Assert.assertEquals(afterAdding,beforeAdding+1,
+                "The quantity of cards before adding new card is not the same as the quantity after adding");
 
 
     }

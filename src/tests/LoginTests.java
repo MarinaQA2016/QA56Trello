@@ -32,7 +32,7 @@ public class LoginTests extends TestBase{
                 .xpath("//button[@data-test-id='header-boards-menu-button']/span[2]"));
         System.out.println("'Boards' button text: " + boardIcon.getText());
         Thread.sleep(5000);
-        Assert.assertEquals("Boards",boardIcon.getText(),"Text on the boardIcon is not 'Boards'");
+        Assert.assertEquals(boardIcon.getText(),"Boards","Text on the boardIcon is not 'Boards'");
 
     }
 
@@ -46,8 +46,10 @@ public class LoginTests extends TestBase{
 
         driver.findElement(By.id("login")).click();
         Thread.sleep(5000);
-        System.out.println("Error message: " + driver.findElement(By.cssSelector("#error>p")).getText());
+        WebElement errorMessage = driver.findElement(By.cssSelector("#error>p"));
+        System.out.println("Error message: " + errorMessage.getText());
         Thread.sleep(5000);
+        Assert.assertTrue(errorMessage.getText().equals("Missing email"));
     }
 
     @Test
@@ -64,10 +66,11 @@ public class LoginTests extends TestBase{
         //----Click 'Log in' button ----
 
         driver.findElement(By.id("login")).click();
-        Thread.sleep(10000);
-        WebElement errorMessage = driver.findElement(By.xpath("//div[@id = 'error']/p"));
+        Thread.sleep(15000);
+        WebElement errorMessage = driver.findElement(By.xpath("(//*[@class= 'error-message'])[1]"));
         System.out.println("Error message: " + errorMessage.getText());
         Thread.sleep(5000);
+        Assert.assertEquals(errorMessage.getText(), "There isn't an account for this email","Error message is not correct");
     }
 
     @Test
@@ -94,6 +97,8 @@ public class LoginTests extends TestBase{
         WebElement errorMessage = driver.findElement(By.xpath("//div[@id='login-error']/span"));
         System.out.println("Error message: " + errorMessage.getText());
         Thread.sleep(5000);
+        Assert.assertTrue(errorMessage.getText().contains("Incorrect email address and / or password."),
+                "There is no error message or the text of the message is not correct");
     }
 
 
