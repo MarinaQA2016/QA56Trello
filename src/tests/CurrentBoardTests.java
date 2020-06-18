@@ -37,7 +37,9 @@ public class CurrentBoardTests extends TestBase{
         WebElement ourBoard = driver
                 .findElement(By.xpath(boardLocator(BOARD_TITLE)));
         ourBoard.click();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
+        waitUntilElementIsVisible(By.xpath("//span[contains(text(),'QA Haifa56')]"),10);
+        waitUntilElementIsClickable(By.xpath("//span[@class='placeholder']"),10);
 
     }
 
@@ -51,23 +53,26 @@ public class CurrentBoardTests extends TestBase{
         System.out.println("Lists before adding: " + beforeAdding);
         WebElement addListOption = driver.findElement(By.xpath("//span[@class='placeholder']"));
         addListOption.click();
+        waitUntilElementIsVisible(By.xpath("//input[@placeholder='Enter list title...']"),10);
         WebElement addTitleField = driver.findElement(By.xpath("//input[@placeholder='Enter list title...']"));
 
         //----Add title of the list
+
         addTitleField.click();
         addTitleField.sendKeys("Test");
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
+        waitUntilElementIsClickable(By.xpath("//input[@type='submit']"),10);
 
         //----Submit of adding list ----
         WebElement addListButton = driver.findElement(By.xpath("//input[@type='submit']"));
         addListButton.click();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         //--- Cancel from edit mode ----
         WebElement cancelEdit = driver
                 .findElement(By.xpath("//a[@class='icon-lg icon-close dark-hover js-cancel-edit']"));
         cancelEdit.click();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         //--- Receive new list of Lists---
         listLists = driver.findElements(By.xpath("//div[@class = 'list js-list-content']"));
         int afterAdding = listLists.size();
