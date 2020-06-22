@@ -55,5 +55,22 @@ public class TestBase {
             e.printStackTrace();
         }
     }
+    public void waitUntilElementIsNotVisible(By locator, int time) {
+        try {
+            new WebDriverWait(driver,time).until(ExpectedConditions
+                    .invisibilityOfElementLocated(locator));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void waitUntilAllElementsAreVisible(By locator, int time) {
+        try {
+            new WebDriverWait(driver,time).until(ExpectedConditions
+                    .visibilityOfAllElementsLocatedBy(locator));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

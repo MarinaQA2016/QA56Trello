@@ -17,27 +17,27 @@ public class CurrentBoardTests extends TestBase{
     public void initTests() throws InterruptedException {
         //--- Press log In menu button
         driver.findElement(By.linkText("Log In")).click();
-        Thread.sleep(5000);
+        waitUntilElementIsClickable(By.id("login"),10);
 
         //----Enter login value and click 'Log in' button ----
         driver.findElement(By.id("user")).sendKeys(LOGIN);
-        Thread.sleep(2000);
+        waitUntilAttributeValueIs(By.
+                id("login"),"value","Log in with Atlassian",10);
         driver.findElement(By.id("login")).click();
-        Thread.sleep(10000);
+        waitUntilElementIsClickable(By.id("login-submit"),15);
 
         //---- Enter password value and click 'Log in' button
         driver.findElement(By.id("password")).sendKeys(PASSWORD);
         driver.findElement(By.id("login-submit")).click();
-        Thread.sleep(25000);
+        waitUntilElementIsClickable(By
+                .xpath("//button[@data-test-id='header-boards-menu-button']/span[2]"),40);
         System.out.println("'Boards' button text: " + driver
                 .findElement(By.xpath("//button[@data-test-id='header-boards-menu-button']/span[2]")).getText());
-        Thread.sleep(5000);
 
         //--- Open 'QA Haifa56'
         WebElement ourBoard = driver
                 .findElement(By.xpath(boardLocator(BOARD_TITLE)));
         ourBoard.click();
-        //Thread.sleep(5000);
         waitUntilElementIsVisible(By.xpath("//span[contains(text(),'QA Haifa56')]"),10);
         waitUntilElementIsClickable(By.xpath("//span[@class='placeholder']"),10);
 
@@ -60,19 +60,17 @@ public class CurrentBoardTests extends TestBase{
 
         addTitleField.click();
         addTitleField.sendKeys("Test");
-       // Thread.sleep(2000);
         waitUntilElementIsClickable(By.xpath("//input[@type='submit']"),10);
 
         //----Submit of adding list ----
         WebElement addListButton = driver.findElement(By.xpath("//input[@type='submit']"));
         addListButton.click();
-        //Thread.sleep(2000);
 
         //--- Cancel from edit mode ----
         WebElement cancelEdit = driver
                 .findElement(By.xpath("//a[@class='icon-lg icon-close dark-hover js-cancel-edit']"));
         cancelEdit.click();
-        //Thread.sleep(2000);
+
         //--- Receive new list of Lists---
         listLists = driver.findElements(By.xpath("//div[@class = 'list js-list-content']"));
         int afterAdding = listLists.size();
@@ -104,22 +102,21 @@ public class CurrentBoardTests extends TestBase{
                 //----Add title of the list
                 addTitleField.click();
                 addTitleField.sendKeys("Test");
-                Thread.sleep(2000);
+                waitUntilElementIsClickable(By.xpath("//input[@type='submit']"),10);
 
                 //----Submit of adding list ----
                 WebElement addListButton = driver.findElement(By.xpath("//input[@type='submit']"));
                 addListButton.click();
-                Thread.sleep(2000);
 
                 //--- Cancel from edit mode ----
                 WebElement cancelEdit = driver
                         .findElement(By.xpath("//a[@class='icon-lg icon-close dark-hover js-cancel-edit']"));
                 cancelEdit.click();
-                Thread.sleep(2000);
+                waitUntilElementIsNotVisible(By.xpath("//a[@class='icon-lg icon-close dark-hover js-cancel-edit']"), 10);
                 System.out.println("Lists after adding: " + driver.
                         findElements(By.xpath("//div[@class = 'list js-list-content']")).size());
             }
-            Thread.sleep(3000);
+
             //---Receive the quantity of cards ---
             int beforeAdding = driver.findElements(By.cssSelector("a.list-card")).size();
 
@@ -143,7 +140,8 @@ public class CurrentBoardTests extends TestBase{
             // ---- Cancel edit mode of the next card
             WebElement cancelEditCardButton = driver.findElement(By.cssSelector("div.card-composer a.icon-close"));
             cancelEditCardButton.click();
-            Thread.sleep(2000);
+            waitUntilElementIsNotVisible(By.cssSelector("div.card-composer a.icon-close"),10);
+
         //---Receive the quantity of cards ---
         int afterAdding = driver.findElements(By.cssSelector("a.list-card")).size();
         Assert.assertEquals(afterAdding,beforeAdding+1,
@@ -151,6 +149,8 @@ public class CurrentBoardTests extends TestBase{
 
 
     }
+
+
 
     private String boardLocator(String boardTitle) {
         return "//div[@title = '" + boardTitle + "']/../..";

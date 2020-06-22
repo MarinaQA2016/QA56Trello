@@ -14,32 +14,36 @@ public class ProfilesVisabilityTests extends TestBase {
     public void initTests() throws InterruptedException {
         //--- Press log In menu button
         driver.findElement(By.linkText("Log In")).click();
-        Thread.sleep(5000);
+        waitUntilElementIsClickable(By.id("login"),10);
 
         //----Enter login value and click 'Log in' button ----
         driver.findElement(By.id("user")).sendKeys(LOGIN);
-        Thread.sleep(2000);
+        waitUntilAttributeValueIs(By.
+                id("login"),"value","Log in with Atlassian",10);
+
         driver.findElement(By.id("login")).click();
-        Thread.sleep(10000);
+        waitUntilElementIsClickable(By.id("login-submit"),15);
 
         //---- Enter password value and click 'Log in' button
         driver.findElement(By.id("password")).sendKeys(PASSWORD);
         driver.findElement(By.id("login-submit")).click();
-        Thread.sleep(25000);
+        waitUntilElementIsClickable(By
+                .xpath("//button[@data-test-id='header-boards-menu-button']/span[2]"),40);
         System.out.println("'Boards' button text: " + driver
                 .findElement(By.xpath("//button[@data-test-id='header-boards-menu-button']/span[2]")).getText());
-        Thread.sleep(5000);
 
         //---- Open Up_Right Menu ----
         WebElement upRightMenu = driver.findElement(By.xpath("//button[@data-test-id = 'header-member-menu-button']"));
         upRightMenu.click();
-        Thread.sleep(2000);
+        waitUntilElementIsVisible(By.xpath("//a[@data-test-id = 'header-member-menu-profile']"),10);
 
         //---- Open ProfileVisability Menu ----
         WebElement profileVisabilityMenu = driver
                 .findElement(By.xpath("//a[@data-test-id = 'header-member-menu-profile']"));
         profileVisabilityMenu.click();
-        Thread.sleep(5000);
+        waitUntilAllElementsAreVisible(By.xpath("//button[@data-test-id = 'header-member-menu-button']"),20);
+        waitUntilElementIsClickable(By.xpath("//button[contains(text(),'Save')]"),10);
+
 
     }
 
