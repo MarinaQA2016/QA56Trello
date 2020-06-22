@@ -4,51 +4,39 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.BoardsPageHelper;
+import pages.LoginPageHelper;
 
 public class LoginTests extends TestBase{
+    LoginPageHelper loginPage;
+    BoardsPageHelper boardsPage;
+
+    @BeforeMethod
+    public void initTests(){
+        loginPage = new LoginPageHelper(driver);
+        boardsPage = new BoardsPageHelper(driver);
+    }
 
     @Test
     public void loginTestPositive()  {
+        loginPage.openLoginPage();
+        loginPage.enterLoginAtlassianAndClickLogin(LOGIN);
+        loginPage.enterPasswordAtlassionAndClickLogin(PASSWORD);
+        boardsPage.waitUntilPageIsLoaded();
 
-        //--- Press log In menu button
-        driver.findElement(By.linkText("Log In")).click();
-        waitUntilElementIsClickable(By.id("login"),10);
-
-        //----Enter login value and click 'Log in' button ----
-        driver.findElement(By.id("user")).sendKeys(LOGIN);
-        waitUntilAttributeValueIs(By.
-                id("login"),"value","Log in with Atlassian",10);
-        driver.findElement(By.id("login")).click();
-
-        waitUntilElementIsClickable(By.id("login-submit"),15);
-
-        //---- Enter password value and click 'Log in' button
-        driver.findElement(By.id("password")).sendKeys(PASSWORD);
-        driver.findElement(By.id("login-submit")).click();
-
-        waitUntilElementIsClickable(By
-                .xpath("//button[@data-test-id='header-boards-menu-button']/span[2]"),40);
-        WebElement boardIcon = driver.findElement(By
-                .xpath("//button[@data-test-id='header-boards-menu-button']/span[2]"));
-
-        Assert.assertEquals(boardIcon.getText(),"Boards","Text on the boardIcon is not 'Boards'");
-
+        Assert.assertEquals(boardsPage.getButtonBoardsText(),"Boards","Text on the boardIcon is not 'Boards'");
     }
 
 
     @Test
     public void loginNegativeNoLoginNoPassword()  {
-        //--- Press log In menu button
-        driver.findElement(By.linkText("Log In")).click();
-        waitUntilElementIsClickable(By.id("login"),10);
+        loginPage.openLoginPage();
+        loginPage.pressLoginButton();
+        loginPage.waitErrorMessage();
 
-        //----Click 'Log in' button ----
-        driver.findElement(By.id("login")).click();
-        waitUntilElementIsVisible(By.cssSelector("#error>p"),10);
-        WebElement errorMessage = driver.findElement(By.cssSelector("#error>p"));
-        System.out.println("Error message: " + errorMessage.getText());
-        Assert.assertTrue(errorMessage.getText().equals("Missing email"));
+        Assert.assertEquals("Missing email",loginPage.getErrorMessage(),"The text of the message is not 'Missing email'");
     }
 
 

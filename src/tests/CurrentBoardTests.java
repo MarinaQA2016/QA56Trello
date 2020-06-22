@@ -8,73 +8,54 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.BoardsPageHelper;
+import pages.CurrentBoardQAHaifa56Helper;
+import pages.LoginPageHelper;
 
 import java.util.List;
 
 public class CurrentBoardTests extends TestBase{
+    LoginPageHelper loginPage;
+    BoardsPageHelper boardsPage;
+    CurrentBoardQAHaifa56Helper qaHaifa56Page;
 
     @BeforeMethod
     public void initTests() throws InterruptedException {
-        //--- Press log In menu button
-        driver.findElement(By.linkText("Log In")).click();
-        waitUntilElementIsClickable(By.id("login"),10);
+        loginPage = new LoginPageHelper(driver);
+        loginPage = new LoginPageHelper(driver);
+        boardsPage = new BoardsPageHelper(driver);
+        qaHaifa56Page = new CurrentBoardQAHaifa56Helper(driver);
+        loginPage.openLoginPage();
+        loginPage.loginAsAtlassian(LOGIN,PASSWORD);
+        boardsPage.waitUntilPageIsLoaded();
+        qaHaifa56Page.openCurrentBoard();
+        qaHaifa56Page.waitUntilPageIsLoaded();
 
-        //----Enter login value and click 'Log in' button ----
-        driver.findElement(By.id("user")).sendKeys(LOGIN);
-        waitUntilAttributeValueIs(By.
-                id("login"),"value","Log in with Atlassian",10);
-        driver.findElement(By.id("login")).click();
-        waitUntilElementIsClickable(By.id("login-submit"),15);
-
-        //---- Enter password value and click 'Log in' button
-        driver.findElement(By.id("password")).sendKeys(PASSWORD);
-        driver.findElement(By.id("login-submit")).click();
-        waitUntilElementIsClickable(By
-                .xpath("//button[@data-test-id='header-boards-menu-button']/span[2]"),40);
-        System.out.println("'Boards' button text: " + driver
-                .findElement(By.xpath("//button[@data-test-id='header-boards-menu-button']/span[2]")).getText());
 
         //--- Open 'QA Haifa56'
-        WebElement ourBoard = driver
+       /* WebElement ourBoard = driver
                 .findElement(By.xpath(boardLocator(BOARD_TITLE)));
-        ourBoard.click();
-        waitUntilElementIsVisible(By.xpath("//span[contains(text(),'QA Haifa56')]"),10);
-        waitUntilElementIsClickable(By.xpath("//span[@class='placeholder']"),10);
+        ourBoard.click();*/
+
 
     }
 
     @Test
-    public void createNewList() throws InterruptedException {
+    public void createNewList()  {
 
         //--- Add new list---
-        List<WebElement> listLists = driver.
-                findElements(By.xpath("//div[@class = 'list js-list-content']"));
-        int beforeAdding = listLists.size();
+
+        /*List<WebElement> listLists = driver.
+                findElements(By.xpath("//div[@class = 'list js-list-content']"));*/
+        int beforeAdding = qaHaifa56Page.getListsQuantity();
         System.out.println("Lists before adding: " + beforeAdding);
-        WebElement addListOption = driver.findElement(By.xpath("//span[@class='placeholder']"));
-        addListOption.click();
-        waitUntilElementIsVisible(By.xpath("//input[@placeholder='Enter list title...']"),10);
-        WebElement addTitleField = driver.findElement(By.xpath("//input[@placeholder='Enter list title...']"));
+        qaHaifa56Page.createNewList();
+        qaHaifa56Page.enterTitle("Test");
+        qaHaifa56Page.submitAddingList();
+        qaHaifa56Page.cancelFromEditMode();
 
-        //----Add title of the list
-
-        addTitleField.click();
-        addTitleField.sendKeys("Test");
-        waitUntilElementIsClickable(By.xpath("//input[@type='submit']"),10);
-
-        //----Submit of adding list ----
-        WebElement addListButton = driver.findElement(By.xpath("//input[@type='submit']"));
-        addListButton.click();
-
-        //--- Cancel from edit mode ----
-        WebElement cancelEdit = driver
-                .findElement(By.xpath("//a[@class='icon-lg icon-close dark-hover js-cancel-edit']"));
-        cancelEdit.click();
-
-        //--- Receive new list of Lists---
-        listLists = driver.findElements(By.xpath("//div[@class = 'list js-list-content']"));
-        int afterAdding = listLists.size();
-        System.out.println("Lists after adding: " + listLists.size());
+        int afterAdding = qaHaifa56Page.getListsQuantity();
+        //System.out.println("Lists after adding: " + listLists.size());
 
         Assert.assertEquals(afterAdding,beforeAdding+1,
                 "The quantity of lists before adding new list is not the same as the quantity after adding");
@@ -152,8 +133,6 @@ public class CurrentBoardTests extends TestBase{
 
 
 
-    private String boardLocator(String boardTitle) {
-        return "//div[@title = '" + boardTitle + "']/../..";
-    }
+
 
 }
