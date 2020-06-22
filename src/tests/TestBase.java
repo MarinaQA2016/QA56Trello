@@ -13,6 +13,7 @@ public class TestBase {
     public static final String BOARD_TITLE = "QA Haifa56";
     public static final String LOGIN = "marinaqatest2019@gmail.com";
     public static final String PASSWORD = "marinaqa";
+    public static final String USERNAME ="marinaqatest";
 
 
     @BeforeMethod
