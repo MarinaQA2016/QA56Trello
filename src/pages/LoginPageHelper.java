@@ -49,4 +49,34 @@ public class LoginPageHelper extends PageBase{
         WebElement errorMessage = driver.findElement(By.cssSelector("#error>p"));
         return errorMessage.getText();
     }
+
+    public void enterLoginNormal(String login) {
+        WebElement loginField = driver.findElement(By.id("user"));
+        loginField.sendKeys(login);
+    }
+
+    public void clickLoginButtonNormal() {
+        driver.findElement(By.id("login")).click();
+    }
+
+    public void waitErrorMessageLoginIncorrect() {
+        waitUntilElementIsVisible(By.xpath("(//*[@class= 'error-message'])[1]"),30);
+        WebElement errorMessage = driver.findElement(By.xpath("(//*[@class= 'error-message'])[1]"));
+        System.out.println("Error message: " + errorMessage.getText());
+    }
+
+    public String getErrorMessageloginIncorrect() {
+        WebElement errorMessage = driver.findElement(By.xpath("(//*[@class= 'error-message'])[1]"));
+        return errorMessage.getText();
+    }
+
+    public void waitErrorMessagePasswordIncorrect() {
+        WebElement errorMessageIncorrectPassword;
+        waitUntilElementIsVisible(By.xpath("//div[@id='login-error']/span"),15);
+    }
+
+    public String getIncorrectPassswordMessage(){
+        WebElement errorMessageIncorrectPassword = driver.findElement(By.xpath("//div[@id='login-error']/span"));
+        return errorMessageIncorrectPassword.getText();
+    }
 }
