@@ -3,16 +3,35 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 
 public class CurrentBoardHelper extends PageBase{
+    @FindBy(xpath = "//span[@class='placeholder']")
+    WebElement addListOption;
+
+    @FindBy(xpath = "//input[@placeholder='Enter list title...']")
+    WebElement addTitleField;
+
+    @FindBy(xpath="//input[@type='submit']")
+    WebElement addListButton;
+
+    @FindBy(xpath = "//a[@class='icon-lg icon-close dark-hover js-cancel-edit']")
+    WebElement cancelEditList;
+
+    @FindBy(xpath = "//div[@class = 'list js-list-content']")
+    List<WebElement> listLists;
+
+
     private String boardName;
 
     public CurrentBoardHelper(WebDriver driver, String boardName) {
         super(driver);
         this.boardName = boardName;
+        PageFactory.initElements(driver,this);
     }
     public void openCurrentBoard(){
         System.out.println("From openCurrentBoard: " + this.boardName);
@@ -22,16 +41,13 @@ public class CurrentBoardHelper extends PageBase{
     }
 
     public void waitUntilPageIsLoaded(){
-        //waitUntilElementIsVisible(By.xpath("//span[contains(text(),'QA Haifa56')]"),10);
         waitUntilElementIsVisible(By.xpath(boardTitleLocator()),10);
-        waitUntilElementIsClickable(By.xpath("//span[@class='placeholder']"),10);
+        waitUntilElementIsClickable(addListButton,10);
     }
 
 
 
     public int getListsQuantity(){
-        List<WebElement> listLists = driver.
-                findElements(By.xpath("//div[@class = 'list js-list-content']"));
         return listLists.size();
     }
 
@@ -42,28 +58,22 @@ public class CurrentBoardHelper extends PageBase{
         this.cancelFromEditMode();
     }
     public void pressCreateNewListButton() {
-        WebElement addListOption = driver.findElement(By.xpath("//span[@class='placeholder']"));
         addListOption.click();
-        waitUntilElementIsVisible(By.xpath("//input[@placeholder='Enter list title...']"),10);
-        //WebElement addTitleField = driver.findElement(By.xpath("//input[@placeholder='Enter list title...']"));
+        waitUntilElementIsVisible(addTitleField,10);
     }
 
     public void enterTitle(String test) {
-        WebElement addTitleField = driver.findElement(By.xpath("//input[@placeholder='Enter list title...']"));
         addTitleField.click();
         addTitleField.sendKeys("Test");
-        waitUntilElementIsClickable(By.xpath("//input[@type='submit']"),10);
+        waitUntilElementIsClickable(addListButton,10);
     }
 
     public void submitAddingList() {
-        WebElement addListButton = driver.findElement(By.xpath("//input[@type='submit']"));
         addListButton.click();
     }
 
     public void cancelFromEditMode() {
-        WebElement cancelEdit = driver
-                .findElement(By.xpath("//a[@class='icon-lg icon-close dark-hover js-cancel-edit']"));
-        cancelEdit.click();
+        cancelEditList.click();
     }
 
     public boolean existsList() {

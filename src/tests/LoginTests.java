@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,13 +16,13 @@ public class LoginTests extends TestBase{
 
     @BeforeMethod
     public void initTests(){
-        loginPage = new LoginPageHelper(driver);
-        boardsPage = new BoardsPageHelper(driver);
+        loginPage = PageFactory.initElements(driver, LoginPageHelper.class);
+        boardsPage = PageFactory.initElements(driver,BoardsPageHelper.class);
+        loginPage.openLoginPage();
     }
 
     @Test
     public void loginTestPositive()  {
-        loginPage.openLoginPage();
         loginPage.enterLoginAtlassianAndClickLogin(LOGIN);
         loginPage.enterPasswordAtlassionAndClickLogin(PASSWORD);
         boardsPage.waitUntilPageIsLoaded();
@@ -32,7 +33,6 @@ public class LoginTests extends TestBase{
 
     @Test
     public void loginNegativeNoLoginNoPassword()  {
-        loginPage.openLoginPage();
         loginPage.pressLoginButton();
         loginPage.waitErrorMessage();
 
@@ -41,8 +41,7 @@ public class LoginTests extends TestBase{
 
 
     @Test
-    public void NegativeLoginIncorrect() throws InterruptedException {
-        loginPage.openLoginPage();
+    public void NegativeLoginIncorrect()  {
         loginPage.enterLoginNormal("ttt@test.com");
         loginPage.clickLoginButtonNormal();
         loginPage.waitErrorMessageLoginIncorrect();
@@ -52,7 +51,6 @@ public class LoginTests extends TestBase{
 
     @Test
     public void NegativePasswordIncorrect()  {
-        loginPage.openLoginPage();
         loginPage.loginAsAtlassian(LOGIN,"error");
         loginPage.waitErrorMessagePasswordIncorrect();
 

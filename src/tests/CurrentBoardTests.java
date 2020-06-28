@@ -2,6 +2,7 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,8 +17,8 @@ public class CurrentBoardTests extends TestBase{
 
     @BeforeMethod
     public void initTests() throws InterruptedException {
-        loginPage = new LoginPageHelper(driver);
-        boardsPage = new BoardsPageHelper(driver);
+        loginPage = PageFactory.initElements(driver,LoginPageHelper.class);
+        boardsPage = PageFactory.initElements(driver,BoardsPageHelper.class);
         qaHaifa56Page = new CurrentBoardHelper(driver,BOARD_TITLE);
         loginPage.openLoginPage();
         loginPage.loginAsAtlassian(LOGIN,PASSWORD);

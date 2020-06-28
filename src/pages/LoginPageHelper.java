@@ -3,32 +3,51 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPageHelper extends PageBase{
+    @FindBy(linkText = "Log In")
+    WebElement logInIcon;
+
+    @FindBy(id = "login")
+    WebElement loginButton;
+
+    @FindBy(id = "user")
+    WebElement userField;
+
+    @FindBy(id = "login-submit")
+    WebElement loginSubmitButton;
+
+    @FindBy(id = "password")
+    WebElement passwordField;
+
+    @FindBy(css = "#error>p")
+    WebElement noLoginNoPasswordError;
+
 
     public LoginPageHelper(WebDriver driver){
         super(driver);
     }
 
     public void openLoginPage(){
-        driver.findElement(By.linkText("Log In")).click();
-        waitUntilElementIsClickable(By.id("login"),10);
+        logInIcon.click();
+        waitUntilElementIsClickable(loginButton,10);
     }
 
     public void enterLoginAtlassianAndClickLogin(String login) {
-        driver.findElement(By.id("user")).sendKeys(login);
-        waitUntilAttributeValueIs(By.
-                id("login"),"value","Log in with Atlassian",10);
-        driver.findElement(By.id("login")).click();
-
-        waitUntilElementIsClickable(By.id("login-submit"),15);
+        userField.sendKeys(login);
+        waitUntilAttributeValueIs(loginButton,"value","Log in with Atlassian",10);
+        loginButton.click();
+        waitUntilElementIsClickable(loginSubmitButton,15);
     }
 
     public void enterPasswordAtlassionAndClickLogin(String password) {
-        driver.findElement(By.id("password")).sendKeys(password);
-        driver.findElement(By.id("login-submit")).click();
+
+        passwordField.sendKeys(password);
+        loginSubmitButton.click();
+
     }
 
     public void loginAsAtlassian(String login, String password){
@@ -38,16 +57,18 @@ public class LoginPageHelper extends PageBase{
 
 
     public void pressLoginButton() {
-        driver.findElement(By.id("login")).click();
+        //driver.findElement(By.id("login")).click();
+        loginButton.click();
     }
 
     public void waitErrorMessage() {
-        waitUntilElementIsVisible(By.cssSelector("#error>p"),10);
+        waitUntilElementIsVisible(noLoginNoPasswordError,10);
+
     }
 
     public String getErrorMessage(){
-        WebElement errorMessage = driver.findElement(By.cssSelector("#error>p"));
-        return errorMessage.getText();
+        //WebElement errorMessage = driver.findElement(By.cssSelector("#error>p"));
+        return noLoginNoPasswordError.getText();
     }
 
     public void enterLoginNormal(String login) {

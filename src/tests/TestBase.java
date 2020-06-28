@@ -3,10 +3,12 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.HomePageHelper;
 
 public class TestBase {
     WebDriver driver;
@@ -14,6 +16,7 @@ public class TestBase {
     public static final String LOGIN = "marinaqatest2019@gmail.com";
     public static final String PASSWORD = "marinaqa";
     public static final String USERNAME ="marinaqatest";
+    HomePageHelper homePage;
 
 
     @BeforeMethod
@@ -21,7 +24,9 @@ public class TestBase {
         //---- Enter to the application ---
         driver = new ChromeDriver();
         driver.get("https://trello.com/");
-        waitUntilElementIsClickable(By.linkText("Log In"),20);
+        homePage = PageFactory.initElements(driver,HomePageHelper.class);
+        homePage.waitUntilPageIsLoaded();
+
 
     }
 
