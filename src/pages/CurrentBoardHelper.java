@@ -42,7 +42,7 @@ public class CurrentBoardHelper extends PageBase{
 
     public void waitUntilPageIsLoaded(){
         waitUntilElementIsVisible(By.xpath(boardTitleLocator()),10);
-        waitUntilElementIsClickable(addListButton,10);
+        waitUntilElementIsClickable(addListOption,10);
     }
 
 
@@ -62,9 +62,9 @@ public class CurrentBoardHelper extends PageBase{
         waitUntilElementIsVisible(addTitleField,10);
     }
 
-    public void enterTitle(String test) {
+    public void enterTitle(String title) {
         addTitleField.click();
-        addTitleField.sendKeys("Test");
+        addTitleField.sendKeys(title);
         waitUntilElementIsClickable(addListButton,10);
     }
 
