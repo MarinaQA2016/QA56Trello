@@ -10,6 +10,8 @@ public class UpperMenuHelper extends PageBase {
     WebElement upperRight;
     @FindBy(xpath = "//a[@data-test-id = 'header-member-menu-profile']")
     WebElement profilevisabilityMenuItem;
+    @FindBy(xpath = "(//span[contains(text(),'Activity')]/..)[2]")
+    WebElement activityMenuItem;
 
     public UpperMenuHelper(WebDriver driver) {
         super(driver);
@@ -17,6 +19,7 @@ public class UpperMenuHelper extends PageBase {
 
     public void waitUntilPageIsLoaded(){
         waitUntilElementIsClickable(profilevisabilityMenuItem,20);
+        waitUntilElementIsClickable(activityMenuItem,20);
     }
 
     public void openProfileVisabilityScreen(){
@@ -26,5 +29,9 @@ public class UpperMenuHelper extends PageBase {
     public void openMenuPage(){
         waitUntilElementIsClickable(upperRight,20);
         upperRight.click();
+    }
+
+    public void openActivityPage() {
+        activityMenuItem.click();
     }
 }
