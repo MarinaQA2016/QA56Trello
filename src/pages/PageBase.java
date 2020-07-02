@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Set;
 
 public class PageBase {
     WebDriver driver;
@@ -46,6 +47,14 @@ public class PageBase {
         try {
             new WebDriverWait(driver,time).until(ExpectedConditions
                     .attributeToBe(element,attribute,value));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void waitUntilTextValueIs(WebElement element, String text, int time) {
+        try {
+            new WebDriverWait(driver,time).until(ExpectedConditions
+                    .textToBePresentInElement(element,text));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -94,4 +103,7 @@ public class PageBase {
             e.printStackTrace();
         }
     }
+
+
+
 }
