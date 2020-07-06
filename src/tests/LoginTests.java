@@ -42,7 +42,7 @@ public class LoginTests extends TestBase{
 
     @Test
     public void NegativeLoginIncorrect()  {
-        loginPage.enterLoginNormal("ttt@test.com");
+        loginPage.enterLoginNormal("smth@test.com");
         loginPage.clickLoginButtonNormal();
         loginPage.waitErrorMessageLoginIncorrect();
 

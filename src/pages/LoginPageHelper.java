@@ -1,11 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.security.Key;
 
 public class LoginPageHelper extends PageBase{
     @FindBy(linkText = "Log In")
@@ -74,10 +77,13 @@ public class LoginPageHelper extends PageBase{
     public void enterLoginNormal(String login) {
         WebElement loginField = driver.findElement(By.id("user"));
         loginField.sendKeys(login);
+        loginField.sendKeys(Keys.ENTER);
     }
 
     public void clickLoginButtonNormal() {
-        driver.findElement(By.id("login")).click();
+        waitUntilElementIsClickable(loginButton,15);
+        //System.out.println("Is loginButton is clickable: " + loginButton.isEnabled());
+        loginButton.click();
     }
 
     public void waitErrorMessageLoginIncorrect() {
